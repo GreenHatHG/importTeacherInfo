@@ -5,8 +5,8 @@ import cn.hutool.poi.excel.ExcelUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-import team.weacsoft.importTeacherInfo.dao.TeacherInfoDao;
 import team.weacsoft.importTeacherInfo.bean.TeacherInfo;
+import team.weacsoft.importTeacherInfo.controller.TeacherInfoRepository;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import java.util.List;
 public class ProcessExcel {
 
     @Autowired
-    private TeacherInfoDao teacherInfoDao;
+    private TeacherInfoRepository teacherInfoRepository;
 
     private List<TeacherInfo> teacherInfos = null;
     private MultipartFile uploadFile = null;
@@ -45,16 +45,12 @@ public class ProcessExcel {
         }
         try{
             for(TeacherInfo teacherInfo : teacherInfos){
-                teacherInfoDao.save(teacherInfo);
+                teacherInfoRepository.save(teacherInfo);
             }
         }catch (Exception e){
             return "dataError";
         }
         return "success";
-    }
-
-    public void truncateTable(){
-        teacherInfoDao.deleteAll();
     }
 
 }

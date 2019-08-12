@@ -26,11 +26,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ErrorResponseEntity(exception.getCode(), exception.getMessage());
     }
 
-    @ExceptionHandler(RuntimeException.class)
-    public ErrorResponseEntity runtimeExceptionHandler(HttpServletRequest request, final Exception e, HttpServletResponse response) {
-        response.setStatus(HttpStatus.BAD_REQUEST.value());
-        RuntimeException exception = (RuntimeException) e;
-        return new ErrorResponseEntity(500, "处理异常,请联系作者");
-    }
+    // @ExceptionHandler(RuntimeException.class)
+    // public ErrorResponseEntity runtimeExceptionHandler(HttpServletRequest request, final Exception e, HttpServletResponse response) {
+    //     response.setStatus(HttpStatus.BAD_REQUEST.value());
+    //     return new ErrorResponseEntity(500, "处理异常,请联系作者");
+    // }
 
 }

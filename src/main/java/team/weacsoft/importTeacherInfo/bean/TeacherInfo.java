@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import java.io.Serializable;
 
+import javax.persistence.*;
 
 /**
  * @description: 教师个人信息定义
@@ -17,15 +18,16 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeacherInfo {
+@IdClass(RelationPK.class)
+public class TeacherInfo implements Serializable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private static final long serialVersionUID = 1L;
 
     @Column(nullable = false)
+    @Id
     private String name;
 
+    @Id
     private String jobNumber;
 
     @Column(nullable = false)
