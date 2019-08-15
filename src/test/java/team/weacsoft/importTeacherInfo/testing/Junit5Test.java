@@ -1,12 +1,8 @@
-package team.weacsoft.importTeacherInfo;
+package team.weacsoft.importTeacherInfo.testing;
 
-import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,24 +15,16 @@ import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
-public class JUnit5ApplicationTests {
+public class Junit5Test{
 
 	@Autowired
-	private WebApplicationContext context;
+	protected WebApplicationContext context;
 
-	private MockMvc mockMvc;
+	protected MockMvc mockMvc;
 
 	@BeforeEach
 	public void setUp(RestDocumentationContextProvider restDocumentation) {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(context)
 				.apply(documentationConfiguration(restDocumentation)).build();
-	}
-
-	@Test
-	public void sample() throws Exception {
-		this.mockMvc.perform(get("/upload"))
-				.andExpect(status().isOk())
-				.andDo(document("sample"));
-	}
-
+    }
 }

@@ -1,0 +1,14 @@
+include::{generated}/overview.adoc[]
+=== Development environment
+- Java
+1.8.0_221
+- Mavenk
+3.6.1
+- Mysql
+8.0.17
+- Os
+Debian10
+
+include::{generated}/paths.adoc[]
+include::{generated}/security.adoc[]
+include::{generated}/definitions.adoc[]

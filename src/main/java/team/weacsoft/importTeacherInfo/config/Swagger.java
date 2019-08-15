@@ -2,14 +2,12 @@ package team.weacsoft.importTeacherInfo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
 
 /**
  * @description: swagger配置
@@ -18,21 +16,25 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  **/
 
 @Configuration
-@EnableSwagger2
+// public class Swagger implements WebMvcConfigurer{
 public class Swagger{
-
     @Bean
     Docket docket(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("team.weacsoft.importTeacherInfo.controller"))
-                .paths(PathSelectors.any())
-                .build().apiInfo(new ApiInfoBuilder()
-                        .description("导入教师信息到mysql")
+                .paths(PathSelectors.regex("(?!/error).+"))
+                .paths(PathSelectors.regex("(?!/profile).+"))
+                .build()
+                .enableUrlTemplating(true)
+                .apiInfo(new ApiInfoBuilder()
+                        .title("教师信息表API文档")
+                        .description("Mysql中教师信息表的增删改查操作")
                         .contact(new Contact("GreenHatHG",
                                 "https://greenhathg.github.io/",
                                 "1239776759@qq.com"))
-                        .title("导入教师信息API文档")
+                        .license("Apache 2.0")
+                        .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                         .build());
     }
+
 }

@@ -8,7 +8,6 @@
 // import org.springframework.web.bind.annotation.RestController;
 
 // import team.weacsoft.importTeacherInfo.bean.TeacherInfo;
-// import team.weacsoft.importTeacherInfo.dao.TeacherInfoDao;
 
 // /**
 //  * @description: 数据库查询接口

@@ -13,4 +13,5 @@ import team.weacsoft.importTeacherInfo.bean.TeacherInfo;
 
 @RepositoryRestResource(path = "teacherinfos")
 public interface TeacherInfoRepository extends JpaRepository<TeacherInfo, Long> {
+    
 }
