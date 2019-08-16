@@ -1,9 +1,12 @@
 package team.weacsoft.importTeacherInfo.controller;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
+import io.swagger.annotations.Api;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RestResource;
+import springfox.documentation.annotations.ApiIgnore;
 import team.weacsoft.importTeacherInfo.bean.TeacherInfo;
+
+import java.util.List;
 
 /**
  * @description: 定义Repository
@@ -11,7 +14,21 @@ import team.weacsoft.importTeacherInfo.bean.TeacherInfo;
  * @create: 2019-08-12 16:57
  **/
 
-@RepositoryRestResource(path = "teacherinfos")
-public interface TeacherInfoRepository extends JpaRepository<TeacherInfo, Long> {
-    
+@ApiIgnore
+@Api(tags = "TeacherInfo Entity")
+@RestResource(path = "teacherinfos")
+public interface TeacherInfoRepository extends CrudRepository<TeacherInfo, String> {
+
+    List<TeacherInfo> findByName(String name);
+
+    List<TeacherInfo> findByJobNumber(String jobnumber);
+
+    List<TeacherInfo> findByOffice(String office);
+
+    List<TeacherInfo> findByPhone(String phone);
+
+    TeacherInfo findByFtpNumber(String ftpnumber);
+
+    List<TeacherInfo> findByFtpPassword(String ftppassword);
+
 }

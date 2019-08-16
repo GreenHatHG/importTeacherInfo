@@ -12,15 +12,16 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import team.weacsoft.importTeacherInfo.ImportTeacherInfoApplication;
 
-@SpringBootTest
+@SpringBootTest(classes = ImportTeacherInfoApplication.class)
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
-public class Junit5Test{
+public class Junit5Factory{
 
 	@Autowired
-	protected WebApplicationContext context;
+	public WebApplicationContext context;
 
-	protected MockMvc mockMvc;
+	public MockMvc mockMvc;
 
 	@BeforeEach
 	public void setUp(RestDocumentationContextProvider restDocumentation) {

@@ -45,6 +45,10 @@ public class ProcessExcel {
         }
         try{
             for(TeacherInfo teacherInfo : teacherInfos){
+                String jobNumber = teacherInfo.getJobNumber();
+                if(!("".equals(jobNumber)) && teacherInfoRepository.findByJobNumber(jobNumber).size() != 0){
+                    continue;
+                }
                 teacherInfoRepository.save(teacherInfo);
             }
         }catch (Exception e){

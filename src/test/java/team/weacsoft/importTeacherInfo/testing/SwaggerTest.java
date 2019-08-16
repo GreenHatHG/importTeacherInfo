@@ -11,7 +11,8 @@ import java.nio.file.Paths;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class SwaggerTest extends Junit5Test{
+
+public class SwaggerTest extends Junit5Factory{
 
     private final static Logger logger = LoggerFactory.getLogger(SwaggerTest.class);
 

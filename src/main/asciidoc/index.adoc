@@ -6,8 +6,6 @@ include::{generated}/overview.adoc[]
 3.6.1
 - Mysql
 8.0.17
-- Os
-Debian10
 
 include::{generated}/paths.adoc[]
 include::{generated}/security.adoc[]

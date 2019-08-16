@@ -15,19 +15,20 @@ import javax.persistence.*;
  **/
 
 @Data
-@Entity
+@Entity(name ="teacherinfo")
 @AllArgsConstructor
 @NoArgsConstructor
-@IdClass(RelationPK.class)
+//@IdClass(RelationPK.class)
 public class TeacherInfo implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
+//    @GeneratedValue(generator = "UUID")
+//    private String id;
+
     @Column(nullable = false)
-    @Id
     private String name;
 
-    @Id
     private String jobNumber;
 
     @Column(nullable = false)
@@ -35,7 +36,8 @@ public class TeacherInfo implements Serializable{
 
     private String phone;
 
-    @Column(nullable = false)
+//    @Column(nullable = false)
+    @Id
     private String ftpNumber;
 
     @Column(nullable = false)

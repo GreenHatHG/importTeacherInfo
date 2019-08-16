@@ -31,7 +31,7 @@
         <swagger.input>${swagger.output.dir}/swagger.json</swagger.input>
     </properties>
 
-   <pluginRepositories>
+    <pluginRepositories>
         <pluginRepository>
             <id>jcenter-snapshots</id>
             <name>jcenter</name>
@@ -47,18 +47,18 @@
         </pluginRepository>
     </pluginRepositories>
 
-    <repositories>  
-        <repository>  
-            <id>alimaven</id>  
-            <name>aliyun maven</name>  
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>  
-            <releases>  
-                <enabled>true</enabled>  
-            </releases>  
-            <snapshots>  
-                <enabled>false</enabled>  
-            </snapshots>  
-        </repository>  
+    <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
         <repository>
             <snapshots>
                 <enabled>false</enabled>
@@ -72,7 +72,7 @@
             <name>jcenter</name>
             <url>http://oss.jfrog.org/artifactory/oss-snapshot-local/</url>
         </repository>
-    </repositories>  
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -147,44 +147,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.5.1</version>
-            <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.5.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.jupiter</groupId>
-                    <artifactId>junit-jupiter-api</artifactId>
-                </exclusion>
-            </exclusions>
-            <scope>test</scope>
-        </dependency> -->
-
-        <!-- <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-data-rest</artifactId>
-            <version>2.9.2</version>
-        </dependency> -->
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -207,6 +169,12 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-bean-validators</artifactId>
             <version>2.9.2</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>springfox-spi</artifactId>
+                    <groupId>io.springfox</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -219,12 +187,36 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-staticdocs</artifactId>
             <version>2.6.1</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>swagger-compat-spec-parser</artifactId>
+                    <groupId>io.swagger</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>io.github.robwin</groupId>
             <artifactId>assertj-swagger</artifactId>
             <version>0.8.1</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>swagger-models</artifactId>
+                    <groupId>io.swagger</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jsr305</artifactId>
+                    <groupId>com.google.code.findbugs</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jackson-coreutils</artifactId>
+                    <groupId>com.github.fge</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -232,6 +224,28 @@
             <artifactId>swagger2markup-spring-restdocs-ext</artifactId>
             <version>${swagger2markup.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>swagger-compat-spec-parser</artifactId>
+                    <groupId>io.swagger</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-collections4</artifactId>
+                    <groupId>org.apache.commons</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>vavr</artifactId>
+                    <groupId>io.vavr</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>asm</artifactId>
+                    <groupId>org.ow2.asm</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
     </dependencies>
@@ -270,11 +284,11 @@
                         <io.springfox.staticdocs.outputDir>${swagger.output.dir}</io.springfox.staticdocs.outputDir>
                         <io.springfox.staticdocs.snippetsOutputDir>${swagger.snippetOutput.dir}</io.springfox.staticdocs.snippetsOutputDir>
                     </systemPropertyVariables>
-                    <includes>
-                        <include>Junit5Test.java</include>
-                        <include>Junit5ApplicationTests.java</include>
-                        <include>SwaggerTest.java</include>
-                    </includes>
+<!--                    <includes>-->
+<!--                        <include>Junit5Test.java</include>-->
+<!--                        <include>Junit5ApplicationTests.java</include>-->
+<!--                        <include>SwaggerTest.java</include>-->
+<!--                    </includes>-->
                 </configuration>
             </plugin>
 
@@ -340,7 +354,7 @@
                         <version>9.2.7.0</version>
                     </dependency>
                 </dependencies>
-                
+
                 <!-- 生成文件时的配置信息 -->
                 <configuration>
                     <sourceDirectory>${asciidoctor.input.directory}</sourceDirectory>
@@ -386,58 +400,6 @@
 
                 </executions>
             </plugin>
-            
-            <!-- <plugin> 
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>1.5.3</version>
-                <executions>
-                    <execution>
-                        <id>generate-docs</id>
-                        <phase>prepare-package</phase> 
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                        <configuration>
-                            <backend>html</backend>
-                            <doctype>book</doctype>
-                        </configuration>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency> 
-                        <groupId>org.springframework.restdocs</groupId>
-                        <artifactId>spring-restdocs-asciidoctor</artifactId>
-                        <version>2.0.3.RELEASE</version>
-                    </dependency>
-                </dependencies>
-            </plugin> -->
-
-            <!-- <plugin> 
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.7</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration> 
-                            <outputDirectory>
-                                ${project.build.outputDirectory}/static/docs
-                            </outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>
-                                        ${project.build.directory}/generated-docs
-                                    </directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin> -->
 
         </plugins>
     </build>
