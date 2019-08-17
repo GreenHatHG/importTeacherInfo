@@ -7,6 +7,39 @@ include::{generated}/overview.adoc[]
 - Mysql
 8.0.17
 
+=== Notes
+
+==== table
+- 表名为teacherinfo
+- 主键为ftpNumber
+- 如果没有建表，默认会建表
+
+==== id
+有些方法有id属性，id对应为ftpNumber，因为ftpNumber为主键，换个名称而已
+
+==== Excel
+excel文件格式实例
+
+- jobNumber和phone可为null，其他notnull
+- ftpNumber为主键，唯一
+|===
+|name |jobNumber |office |phone |ftpNumber |ftpPassword
+
+|1
+|1
+|1
+|1
+|100
+|1
+
+|2
+|2
+|2
+|2
+|200
+|2
+|===
+
 include::{generated}/paths.adoc[]
 include::{generated}/security.adoc[]
 include::{generated}/definitions.adoc[]

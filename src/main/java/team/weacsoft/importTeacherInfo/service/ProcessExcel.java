@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 import team.weacsoft.importTeacherInfo.bean.TeacherInfo;
-import team.weacsoft.importTeacherInfo.controller.TeacherInfoRepository;
 
 import java.util.List;
 
@@ -46,7 +45,11 @@ public class ProcessExcel {
         try{
             for(TeacherInfo teacherInfo : teacherInfos){
                 String jobNumber = teacherInfo.getJobNumber();
-                if(!("".equals(jobNumber)) && teacherInfoRepository.findByJobNumber(jobNumber).size() != 0){
+                /**
+                 * 工号不为空，同时在表中已经有记录
+                 */
+                if(jobNumber != null
+                        && teacherInfoRepository.findByJobNumber(jobNumber) != null){
                     continue;
                 }
                 teacherInfoRepository.save(teacherInfo);

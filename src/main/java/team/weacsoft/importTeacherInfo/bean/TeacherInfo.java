@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
-
-import javax.persistence.*;
 
 /**
  * @description: 教师个人信息定义
@@ -18,13 +19,9 @@ import javax.persistence.*;
 @Entity(name ="teacherinfo")
 @AllArgsConstructor
 @NoArgsConstructor
-//@IdClass(RelationPK.class)
 public class TeacherInfo implements Serializable{
 
     private static final long serialVersionUID = 1L;
-
-//    @GeneratedValue(generator = "UUID")
-//    private String id;
 
     @Column(nullable = false)
     private String name;
@@ -36,7 +33,6 @@ public class TeacherInfo implements Serializable{
 
     private String phone;
 
-//    @Column(nullable = false)
     @Id
     private String ftpNumber;
 
